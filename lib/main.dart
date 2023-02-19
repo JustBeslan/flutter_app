@@ -1,152 +1,81 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(const MaterialApp(
+  home: UserPanel(),
+));
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class UserPanel extends StatefulWidget {
+  const UserPanel({Key? key}) : super(key: key);
 
+  @override
+  State<UserPanel> createState() => _UserPanelState();
+}
+
+class _UserPanelState extends State<UserPanel> {
+
+  int _count = 0;
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: _buildDarkTheme(),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('itProgerApp'),
-          centerTitle: true,
-        ),
-        body: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
+    return Scaffold(
+      backgroundColor: Colors.redAccent,
+      appBar: AppBar(
+        title: const Text("itProger User"),
+        centerTitle: true,
+        backgroundColor: Colors.black45,
+      ),
+      body: SafeArea(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Column(
               children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
+                const Padding(padding: EdgeInsets.only(top: 30)),
+                const Text(
+                  "John Doe",
+                  style: TextStyle(
+                    fontSize: 25,
+                    color: Colors.white,
+                  ),
+                ),
+                const Padding(padding: EdgeInsets.only(top: 10)),
+                const CircleAvatar(
+                  backgroundImage: AssetImage('assets/in_yan.png'),
+                  radius: 50,
+                ),
+                const Row(
                   children: [
-                    Container(
-                      margin: const EdgeInsets.all(10),
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.deepOrangeAccent
-                        ),
-                        child: const Text('Add'),
+                    Icon(Icons.mail_outline, size: 25),
+                    Padding(padding: EdgeInsets.only(left: 10)),
+                    Text(
+                      "admin@itproger.com",
+                      style: TextStyle(
+                        color: Colors.white,
                       ),
                     ),
-                    ElevatedButton.icon(
-                      onPressed: () {},
-                      icon: const Icon(
-                            Icons.add,
-                            size: 25,
-                            color: Colors.white),
-                      label: const Text('Add'),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.deepOrangeAccent
-                      ),
-                    ),
                   ],
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    OutlinedButton(
-                        onPressed: () {},
-                        child: const Text('Add')),
-                    OutlinedButton.icon(
-                        onPressed: () {},
-                        icon: const Icon(
-                            Icons.add,
-                            size: 25,
-                            color: Colors.deepOrangeAccent),
-                        label: const Text(
-                          'Add',
-                          style: TextStyle(
-                            color: Colors.deepOrangeAccent
-                          ),
-                        )
-                    ),
-                  ],
+                const Padding(padding: EdgeInsets.only(top: 10)),
+                Text(
+                  "Count: $_count",
+                  style: const TextStyle(
+                    color: Colors.white,
+                  ),
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    TextButton.icon(
-                        onPressed: () {},
-                        icon: const Icon(
-                            Icons.add,
-                            size: 25,
-                            color: Colors.deepOrangeAccent),
-                        label:  const Text(
-                            'Add',
-                            style: TextStyle(
-                                color: Colors.deepOrangeAccent,
-                                fontSize: 25
-                            )
-                        )
-                    ),
-                    TextButton(
-                        onPressed: () {},
-                        child:  const Text(
-                            'Add',
-                            style: TextStyle(
-                                color: Colors.deepOrangeAccent,
-                                fontSize: 25
-                            )
-                        )
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Image.network(
-                      "https://avatars.githubusercontent.com/u/48148617?v=4",
-                      width: 50,
-                      height: 50,
-                    ),
-                    const Image(
-                      image: NetworkImage('https://avatars.githubusercontent.com/u/48148617?v=4'),
-                      width: 50,
-                      height: 50,
-                    ),
-                    Image.asset(
-                      'assets/in_yan.png',
-                      width: 50,
-                      height: 50,
-                    ),
-                    const Image(
-                      image: AssetImage('assets/in_yan.png'),
-                      width: 50,
-                      height: 50,
-                    ),
-                  ],
-                ),
-              ]
-          )
+              ],
+            ),
+          ],
         ),
-        floatingActionButton: SizedBox(
-          width: 100,
-          height: 100,
-          child: FloatingActionButton(
-            backgroundColor: Colors.deepOrangeAccent,
-            onPressed: () {
-              print('Clicked');
-            },
-            child: const Text('Нажми'),
-          ),
-        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.amber,
+        onPressed: () {
+          setState(() {
+            _count++;
+          });
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }
-}
-
-ThemeData _buildDarkTheme() {
-  const primaryColor = Color(0xFF151026);
-  final baseTheme = ThemeData(fontFamily: "SunFlower");
-  return baseTheme.copyWith(
-    appBarTheme: const AppBarTheme(
-      color: Colors.deepOrangeAccent
-    ),
-    brightness: Brightness.dark,
-    primaryColor: primaryColor,
-  );
 }
