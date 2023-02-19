@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 void main() => runApp(const MyApp());
 
@@ -16,27 +15,124 @@ class MyApp extends StatelessWidget {
           title: const Text('itProgerApp'),
           centerTitle: true,
         ),
-        body: const Center(
-          child: Text('itProger App',
-            style: TextStyle(
-              fontSize: 40,
-              color: Colors.red,
-              fontFamily: "Babylonica",
-            ),
-          ),
+        body: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.all(10),
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.deepOrangeAccent
+                        ),
+                        child: const Text('Add'),
+                      ),
+                    ),
+                    ElevatedButton.icon(
+                      onPressed: () {},
+                      icon: const Icon(
+                            Icons.add,
+                            size: 25,
+                            color: Colors.white),
+                      label: const Text('Add'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.deepOrangeAccent
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    OutlinedButton(
+                        onPressed: () {},
+                        child: const Text('Add')),
+                    OutlinedButton.icon(
+                        onPressed: () {},
+                        icon: const Icon(
+                            Icons.add,
+                            size: 25,
+                            color: Colors.deepOrangeAccent),
+                        label: const Text(
+                          'Add',
+                          style: TextStyle(
+                            color: Colors.deepOrangeAccent
+                          ),
+                        )
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    TextButton.icon(
+                        onPressed: () {},
+                        icon: const Icon(
+                            Icons.add,
+                            size: 25,
+                            color: Colors.deepOrangeAccent),
+                        label:  const Text(
+                            'Add',
+                            style: TextStyle(
+                                color: Colors.deepOrangeAccent,
+                                fontSize: 25
+                            )
+                        )
+                    ),
+                    TextButton(
+                        onPressed: () {},
+                        child:  const Text(
+                            'Add',
+                            style: TextStyle(
+                                color: Colors.deepOrangeAccent,
+                                fontSize: 25
+                            )
+                        )
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Image.network(
+                      "https://avatars.githubusercontent.com/u/48148617?v=4",
+                      width: 50,
+                      height: 50,
+                    ),
+                    const Image(
+                      image: NetworkImage('https://avatars.githubusercontent.com/u/48148617?v=4'),
+                      width: 50,
+                      height: 50,
+                    ),
+                    Image.asset(
+                      'assets/in_yan.png',
+                      width: 50,
+                      height: 50,
+                    ),
+                    const Image(
+                      image: AssetImage('assets/in_yan.png'),
+                      width: 50,
+                      height: 50,
+                    ),
+                  ],
+                ),
+              ]
+          )
         ),
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.deepOrangeAccent,
-          onPressed: () => Fluttertoast.showToast(
-              msg: 'Clicked',
-              toastLength: Toast.LENGTH_LONG,
-              gravity: ToastGravity.BOTTOM,
-              timeInSecForIosWeb: 1,
-              backgroundColor: Colors.black,
-              textColor: Colors.white,
-              fontSize: 14.0
+        floatingActionButton: SizedBox(
+          width: 100,
+          height: 100,
+          child: FloatingActionButton(
+            backgroundColor: Colors.deepOrangeAccent,
+            onPressed: () {
+              print('Clicked');
+            },
+            child: const Text('Нажми'),
           ),
-          child: const Text('Нажми'),
         ),
       ),
     );
